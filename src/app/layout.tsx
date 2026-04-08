@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Noto_Sans_Thai } from "next/font/google";
+import { Noto_Sans_Thai, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const noto = Noto_Sans_Thai({
   variable: "--font-noto",
   subsets: ["thai", "latin"],
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -21,8 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="th" className={`${noto.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-[#f0fdf4] text-[#1a3a2a] font-[family-name:var(--font-noto)] antialiased">
+    <html lang="th" className={`${noto.variable} ${jetbrains.variable} scroll-smooth`}>
+      <body
+        className="min-h-screen font-[family-name:var(--font-noto)] antialiased"
+        style={{ background: "var(--cyber-bg)", color: "var(--cyber-text)" }}
+      >
         {children}
       </body>
     </html>
